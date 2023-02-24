@@ -9,8 +9,8 @@ function App() {
     setCartItems([...cartItems, product]);
   }
 
-  function removeFromCart(item) {
-    setCartItems(cartItems.filter((product) => product.id !== item.id));
+  function removeFromCart(product) {
+    setCartItems(cartItems.filter((P) => P.id !== product.id));
   }
 
   return (

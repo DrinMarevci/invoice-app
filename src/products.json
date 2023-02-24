@@ -3,42 +3,14 @@
             {
               "name": "Water",
               "id": 1,
-              "quantity": 50,
-              "price_per_unit": 0.25,
-              "vat": 8
-            },
-            {
-              "name": "Water",
-              "id": 2,
-              "quantity": 50,
-              "price_per_unit": 0.25,
-              "vat": 8
-            },
-            {
-              "name": "Water",
-              "id": 3,
-              "quantity": 50,
-              "price_per_unit": 0.25,
-              "vat": 8
-            },
-            {
-              "name": "Water",
-              "id": 4,
-              "quantity": 50,
-              "price_per_unit": 0.25,
-              "vat": 8
-            },    
-            {
-              "name": "Water",
-              "id": 5,
-              "quantity": 40,
+              "quantity": 1,
               "price_per_unit": 0.25,
               "vat": 8
             },
             {
               "name": "Chips",
               "id": 6,
-              "quantity": 38,
+              "quantity": 1,
               "price_per_unit": 2.4,
               "vat": 8
             },
@@ -52,15 +24,7 @@
             {
               "name": "Coca Cola",
               "id": 8,
-              "quantity": 50,
-              "price_per_unit": 0.5,
-              "discount_per_unit": 0.1,
-              "vat": 18
-            },
-            {
-              "name": "Coca Cola",
-              "id": 9,
-              "quantity": 27,
+              "quantity": 1,
               "price_per_unit": 0.5,
               "discount_per_unit": 0.1,
               "vat": 18
@@ -68,42 +32,35 @@
             {
               "name": "Chocolate Bar",
               "id": 10,
-              "quantity": 38,
+              "quantity": 1,
               "price_per_unit": 1.25,
               "vat": 22
             },
             {
               "name": "Hand Soap",
               "id": 11,
-              "quantity": 50,
-              "price_per_unit": 3.78,
-              "vat": 8
-            },
-            {
-              "name": "Hand Soap",
-              "id": 12,
-              "quantity": 42,
+              "quantity": 1,
               "price_per_unit": 3.78,
               "vat": 8
             },
             {
               "name": "Fish Meat",
               "id": 13,
-              "quantity": 49,
+              "quantity": 1,
               "price_per_unit": 8.3,
               "vat": 18
             },
             {
               "name": "Humus",
               "id": 14,
-              "quantity": 16,
+              "quantity": 1,
               "price_per_unit": 2.66,
               "vat": 18
             },
             {
               "name": "White Wine",
               "id": 15,
-              "quantity": 18,
+              "quantity": 1,
               "price_per_unit": 9.18,
               "discount_per_unit": 0.02,
               "vat": 18
@@ -111,162 +68,78 @@
             {
               "name": "Bananas",
               "id": 16,
-              "quantity": 8,
+              "quantity": 1,
               "price_per_unit": 1.25,
               "vat": 22
             },
             {
               "name": "Wine",
               "id": 17,
-              "quantity": 22,
+              "quantity": 1,
               "price_per_unit": 9.78,
               "vat": 22
             },
             {
               "name": "Oil",
               "id": 18,
-              "quantity": 10,
+              "quantity": 1,
               "price_per_unit": 8.3,
               "vat": 18
             },
             {
               "name": "Cigarettes",
               "id": 19,
-              "quantity": 50,
-              "price_per_unit": 5.46,
-              "vat": 22
-            },
-            {
-              "name": "Cigarettes",
-              "id": 20,
-              "quantity": 39,
+              "quantity": 1,
               "price_per_unit": 5.46,
               "vat": 22
             },
             {
               "name": "Cookies",
               "id": 21,
-              "quantity": 33,
+              "quantity": 1,
               "price_per_unit": 1.34,
               "vat": 8
             },
             {
               "name": "Yogurt",
               "id": 22,
-              "quantity": 14,
+              "quantity": 1,
               "price_per_unit": 0.66,
               "vat": 18
             },
             {
               "name": "Bleach",
               "id": 23,
-              "quantity": 11,
+              "quantity": 1,
               "price_per_unit": 1.23,
               "vat": 22
             },
             {
               "name": "Napkins",
-              "id": 24,
-              "quantity": 50,
-              "price_per_unit": 0.21,
-              "vat": 8
-            },
-            {
-              "name": "Napkins",
               "id": 25,
-              "quantity": 35,
+              "quantity": 1,
               "price_per_unit": 0.21,
               "vat": 8
-            },
-            {
-              "name": "Eggs",
-              "id": 26,
-              "quantity": 50,
-              "price_per_unit": 0.16,
-              "vat": 18
-            },
-            {
-              "name": "Eggs",
-              "id": 27,
-              "quantity": 50,
-              "price_per_unit": 0.16,
-              "vat": 18
             },
             {
               "name": "Eggs",
               "id": 28,
-              "quantity": 4,
+              "quantity": 1,
               "price_per_unit": 0.16,
-              "vat": 18
-            },
-            {
-              "name": "Plastic Bags",
-              "id": 29,
-              "quantity": 50,
-              "price_per_unit": 0.05,
-              "vat": 18
-            },
-            {
-              "name": "Plastic Bags",
-              "id": 30,
-              "quantity": 50,
-              "price_per_unit": 0.05,
-              "vat": 18
-            },
-            {
-              "name": "Plastic Bags",
-              "id": 31,
-              "quantity": 50,
-              "price_per_unit": 0.05,
-              "vat": 18
-            },
-            {
-              "name": "Plastic Bags",
-              "id": 32,
-              "quantity": 50,
-              "price_per_unit": 0.05,
-              "vat": 18
-            },
-            {
-              "name": "Plastic Bags",
-              "id": 33,
-              "quantity": 50,
-              "price_per_unit": 0.05,
-              "vat": 18
-            },
-            {
-              "name": "Plastic Bags",
-              "id": 34,
-              "quantity": 50,
-              "price_per_unit": 0.05,
               "vat": 18
             },
             {
               "name": "Plastic Bags",
               "id": 35,
-              "quantity": 50,
-              "price_per_unit": 0.05,
-              "vat": 18
-            },
-            {
-              "name": "Plastic Bags",
-              "id": 36,
-              "quantity": 48,
+              "quantity": 1,
               "price_per_unit": 0.05,
               "vat": 18
             },
             {
               "name": "Aluminum Foils",
               "id": 37,
-              "quantity": 21,
+              "quantity": 1,
               "price_per_unit": 1.12,
-              "vat": 8
-            },
-            {
-              "name": "Razors",
-              "id": 38,
-              "quantity": 50,
-              "price_per_unit": 8.10,
               "vat": 8
             },
             {
@@ -278,36 +151,8 @@
             },
             {
               "name": "Lotions",
-              "id": 40,
-              "quantity": 50,
-              "price_per_unit": 12,
-              "vat": 22
-            },
-            {
-              "name": "Lotions",
-              "id": 41,
-              "quantity": 50,
-              "price_per_unit": 12,
-              "vat": 22
-            },
-            {
-              "name": "Lotions",
-              "id": 42,
-              "quantity": 50,
-              "price_per_unit": 12,
-              "vat": 22
-            },
-            {
-              "name": "Lotions",
-              "id": 43,
-              "quantity": 50,
-              "price_per_unit": 12,
-              "vat": 22
-            },
-            {
-              "name": "Lotions",
               "id": 44,
-              "quantity": 4,
+              "quantity": 1,
               "price_per_unit": 12,
               "vat": 22
             }

@@ -1,34 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-function ShoppingCart({ cartItems, removeFromCart }) {
-  const [quantities, setQuantities] = useState(
-    cartItems.reduce((quantities, item) => {
-      quantities[item.id] = item.quantity;
-      return quantities;
-    }, {})
+function ShoppingCart({ cartItems, removeFromCart, createInvoice }) {
+  const [quantities, setQuantities] = useState({});
+  const [selectedItems, setSelectedItems] = useState([]);
+
+  useEffect(() => {
+    setQuantities(
+      cartItems.reduce((quantities, item) => {
+        quantities[item.id] = item.quantity || 1;
+        return quantities;
+      }, {})
+    );
+  }, [cartItems]);
+
+  const cartTotal = cartItems.reduce(
+    (total, { price_per_unit, id }) => total + price_per_unit * quantities[id],
+    0
   );
 
-  const cartTotal = cartItems.reduce((acc, product) => {
-    return acc + product.price_per_unit * quantities[product.id];
-  }, 0);
+  const handleQuantityChange = (id, quantity) =>
+    setQuantities((prevQuantities) => ({ ...prevQuantities, [id]: quantity }));
 
-  const handleRemove = (product) => {
-    removeFromCart(product);
-  };
-
-  const handleQuantityChange = (productId, quantity) => {
-    setQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [productId]: quantity,
-    }));
-  };
-
-  const handleAddToCart = (product) => {
-    const quantity = quantities[product.id];
-    if (quantity > 0) {
-      for (let i = 0; i < quantity; i++) {
-        removeFromCart(product);
-      }
+  const handleAddToCart = (item) => {
+    const quantity = quantities[item.id];
+    const maxQuantity = item.max_quantity || 50;
+    const totalQuantity = cartItems.reduce(
+      (total, { id, quantity: itemQuantity }) =>
+        total + (id === item.id ? quantity : itemQuantity),
+      0
+    );
+    if (totalQuantity > maxQuantity) {
+      alert(
+        `Cannot add ${quantity} ${item.name}(s) to cart. Maximum quantity is ${maxQuantity}.`
+      );
+      return;
+    }
+    for (let i = 0; i < quantity; i++) {
+      setSelectedItems([...selectedItems, item]);
+      removeFromCart(item);
     }
   };
 
@@ -38,31 +47,28 @@ function ShoppingCart({ cartItems, removeFromCart }) {
       {cartItems.length === 0 ? (
         <p>Your cart is empty.</p>
       ) : (
-        <div>
-          {cartItems.map((product) => (
-            <div key={product.id} className="cart-item">
+        <>
+          {cartItems.map((item) => (
+            <div key={item.id} className="cart-item">
               <p>
-                {product.price_per_unit} - {product.name}
+                {item.price_per_unit} - {item.name}
               </p>
               <input
                 type="number"
-                value={quantities[product.id]}
-                onChange={(event) =>
-                  handleQuantityChange(
-                    product.id,
-                    parseInt(event.target.value)
-                  )
+                min="1"
+                value={quantities[item.id] || 1}
+                onChange={(e) =>
+                  handleQuantityChange(item.id, parseInt(e.target.value))
                 }
               />
-              <button onClick={() => handleAddToCart(product)}>
-                Add to cart
-              </button>
-              <button onClick={() => handleRemove(product)}>Remove</button>
+              <button onClick={() => handleAddToCart(item)}>Add to cart</button>
+              <button onClick={() => removeFromCart(item)}>Remove</button>
             </div>
           ))}
           <hr />
           <p>Total: {cartTotal}</p>
-        </div>
+          <button onClick={() => createInvoice(selectedItems)}>Create Invoice</button>
+        </>
       )}
     </div>
   );

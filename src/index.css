@@ -84,6 +84,32 @@
   font-style: italic;
 }
 
+.invoice {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th,
+td {
+  border: 1px solid black;
+  padding: 5px;
+  text-align: left;
+}
+
+th {
+  background-color: #ccc;
+}
+
+tfoot {
+  font-weight: bold;
+}
 
 
 

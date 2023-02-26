@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import Invoice from "./Invoice";  // import the Invoice component
 
-function ShoppingCart({ cartItems, removeFromCart, createInvoice }) {
+function ShoppingCart({ cartItems, removeFromCart }) {
   const [quantities, setQuantities] = useState({});
   const [selectedItems, setSelectedItems] = useState([]);
+  const [showInvoice, setShowInvoice] = useState(false); // new state to control visibility of the invoice component
 
   useEffect(() => {
     setQuantities(
@@ -35,10 +37,13 @@ function ShoppingCart({ cartItems, removeFromCart, createInvoice }) {
       );
       return;
     }
-    for (let i = 0; i < quantity; i++) {
-      setSelectedItems([...selectedItems, item]);
-      removeFromCart(item);
-    }
+    setSelectedItems([...selectedItems, { ...item, quantity }]); // update the quantity of the item being added
+    const updatedCartItems = cartItems.filter((cartItem) => cartItem.id !== item.id);
+    removeFromCart(updatedCartItems);
+  };
+
+  const handleCreateInvoice = () => {
+    setShowInvoice(true); // show the invoice component
   };
 
   return (
@@ -51,24 +56,28 @@ function ShoppingCart({ cartItems, removeFromCart, createInvoice }) {
           {cartItems.map((item) => (
             <div key={item.id} className="cart-item">
               <p>
-                {item.price_per_unit} - {item.name}
+                {item.name} - Price:{item.price_per_unit}$, VAT:{item.vat}%
               </p>
               <input
                 type="number"
                 min="1"
                 value={quantities[item.id] || 1}
                 onChange={(e) =>
-                  handleQuantityChange(item.id, parseInt(e.target.value))
+                  handleQuantityChange(item.id, +e.target.value)
                 }
               />
-              <button onClick={() => handleAddToCart(item)}>Add to cart</button>
+
+              <button onClick={() => handleAddToCart(item)}>Buy</button>
               <button onClick={() => removeFromCart(item)}>Remove</button>
             </div>
           ))}
           <hr />
           <p>Total: {cartTotal}</p>
-          <button onClick={() => createInvoice(selectedItems)}>Create Invoice</button>
+          <button onClick={handleCreateInvoice}>Create Invoice</button>
         </>
+      )}
+      {showInvoice && (
+        <Invoice items={selectedItems} cartTotal={cartTotal} onClose={() => setShowInvoice(false)} />
       )}
     </div>
   );

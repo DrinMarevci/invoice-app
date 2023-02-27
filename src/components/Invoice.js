@@ -1,6 +1,6 @@
 import React from "react";
 
-function Invoice({ items }) {
+function Invoice({ items, onClose }) {
   const invoices = [];
   let currentInvoice = { items: [], totalPrice: 0 };
 
@@ -19,9 +19,12 @@ function Invoice({ items }) {
   }
 
   return (
-    <div>
+    <div className="invoice-wrapper">
       {invoices.map((invoice, index) => (
         <div className="invoice" key={index}>
+          <button className="close-btn" onClick={onClose}>
+            X
+          </button>
           <h2>Invoice {index + 1}</h2>
           <table>
             <thead>

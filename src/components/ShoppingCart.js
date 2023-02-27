@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Invoice from "./Invoice";  // import the Invoice component
+import Invoice from "./Invoice";
 
 function ShoppingCart({ cartItems, removeFromCart }) {
   const [quantities, setQuantities] = useState({});
   const [selectedItems, setSelectedItems] = useState([]);
-  const [showInvoice, setShowInvoice] = useState(false); // new state to control visibility of the invoice component
+  const [showInvoice, setShowInvoice] = useState(false);
 
   useEffect(() => {
     setQuantities(
@@ -14,11 +14,6 @@ function ShoppingCart({ cartItems, removeFromCart }) {
       }, {})
     );
   }, [cartItems]);
-
-  const cartTotal = cartItems.reduce(
-    (total, { price_per_unit, id }) => total + price_per_unit * quantities[id],
-    0
-  );
 
   const handleQuantityChange = (id, quantity) =>
     setQuantities((prevQuantities) => ({ ...prevQuantities, [id]: quantity }));
@@ -37,13 +32,13 @@ function ShoppingCart({ cartItems, removeFromCart }) {
       );
       return;
     }
-    setSelectedItems([...selectedItems, { ...item, quantity }]); // update the quantity of the item being added
+    setSelectedItems([...selectedItems, { ...item, quantity }]);
     const updatedCartItems = cartItems.filter((cartItem) => cartItem.id !== item.id);
     removeFromCart(updatedCartItems);
   };
 
   const handleCreateInvoice = () => {
-    setShowInvoice(true); // show the invoice component
+    setShowInvoice(true);
   };
 
   return (
@@ -66,18 +61,24 @@ function ShoppingCart({ cartItems, removeFromCart }) {
                   handleQuantityChange(item.id, +e.target.value)
                 }
               />
-
               <button onClick={() => handleAddToCart(item)}>Buy</button>
               <button onClick={() => removeFromCart(item)}>Remove</button>
             </div>
           ))}
-          <hr />
-          <p>Total: {cartTotal}</p>
-          <button onClick={handleCreateInvoice}>Create Invoice</button>
+          {selectedItems.length > 0 && (
+            <>
+              <hr />
+              <p>Total: {selectedItems.reduce((total, { price_per_unit, quantity }) => total + price_per_unit * quantity, 0)}</p>
+              <button onClick={handleCreateInvoice}>Create Invoice</button>
+            </>
+          )}
         </>
       )}
       {showInvoice && (
-        <Invoice items={selectedItems} cartTotal={cartTotal} onClose={() => setShowInvoice(false)} />
+        <Invoice
+          items={selectedItems}
+          onClose={() => setShowInvoice(false)}
+        />
       )}
     </div>
   );
